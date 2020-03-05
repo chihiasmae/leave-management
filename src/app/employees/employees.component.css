@@ -1,0 +1,40 @@
+
+.butonexcel{
+    margin: 0 auto;
+    width: 100px;
+  
+  }
+  
+  .mat-card {
+    transition: box-shadow 280ms cubic-bezier(.4,0,.2,1);
+    display: block;
+    position: relative;
+    padding: 16px;
+    border-radius: 4px;
+    width: -webkit-fill-available;
+  }
+  .example-container {
+    display: flex;
+    flex-direction: column;
+    min-width: 180%;
+  }
+  
+  .example-header {
+    min-height: 64px;
+    padding: 8px 24px 0;
+  }
+  
+  .mat-form-field {
+    font-size: 14px;
+    width: 100%;
+  }
+  
+  
+  .mat-table {
+    margin: 0 auto;
+    margin-left: -400px;
+    width: 180%;
+    overflow: auto;
+    max-height: 500px;
+  }
+  

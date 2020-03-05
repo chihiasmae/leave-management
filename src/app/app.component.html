@@ -1,0 +1,172 @@
+
+<!-- navbar -->
+
+<div class="diivv">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light"*ngIf="currentUser">
+      <button mat-icon-button (click)="opened = !opened">
+          <mat-icon>menu</mat-icon>
+          </button>
+      <div class="header-main">
+          <a class="navbar-brand">
+            <img id="aeva" src="assets/image/aevaweb.png"> 
+            
+          </a>
+        </div>
+        <a href="" style="font-family: -apple-system;font-weight: 500;font-size: 1rem"> <strong> Bienvenue {{currentUser.username}}</strong></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          
+          <li class="nav-item" *ngIf="isAdmin" >
+             
+            <a class="nav-link" href="#"routerLink="congesPersonnel">
+                <mat-icon class="icon">record_voice_over</mat-icon>
+                <span class="label"><strong>Demandes de congés</strong></span> 
+            </a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <mat-icon>perm_identity</mat-icon>
+                <span class="label"><strong>Admin</strong> </span> 
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="#" routerLink="profile"><strong>Mon profil</strong> </a>
+              <a class="dropdown-item" href="#"routerLink="edit"><strong>Editer profil</strong> </a>
+              <div class="dropdown-divider"></div>
+             
+            </div>
+          </li>
+          <li class="nav-item">
+            <a  routerLink="login"class="nav-link" href="#" (click)="logout()">
+                <mat-icon class="icon">input</mat-icon>
+              <span class="label"><strong>Déconnection</strong></span> 
+            </a>
+          </li>
+        </ul>
+       
+      </div>
+    </nav>
+        
+  </div>   
+
+
+
+
+
+
+
+<!-- sidnav -->
+<mat-sidenav-container class="main-sidenav-container"id="sidebar" class="sidebar" [ngClass]="{'sidebar-bg' : hasBackgroundImage()}"(backdropClick)="opened = !opened"*ngIf="currentUser">
+  <mat-sidenav style="top: 74px" class="ee" [mode]="mode"
+           [opened]="opened"
+           [fixedInViewport]="true"
+           [fixedTopGap]="layoutGap">
+          
+ 
+   <div class="sidebar-content">
+     <perfect-scrollbar>
+     
+ 
+      
+       <div class="sidebar-menu">
+         <ul>
+           <li *ngFor="let menu of menus" [ngClass]="{'active': menu.active , 'sidebar-dropdown':menu.type === 'dropdown' , 'header-menu':menu.type === 'header'}">
+             <span *ngIf="menu.type === 'header'">{{menu.title}}</span>
+             <a *ngIf="menu.type !== 'header'" href="#" (click)='toggle(menu)' routerLink="{{menu.linkk}}">
+              
+                <mat-icon class="icon">{{menu.icon}}</mat-icon>
+             
+               <span >{{menu.title}}</span>
+             
+               <!-- <span *ngIf="menu.badge" class="badge badge-pill" [ngClass]="menu.badge.class">{{menu.badge.text}}</span> -->
+             </a>
+             <div *ngIf="menu.type === 'dropdown'" class="sidebar-submenu" [@slide]="getState(menu)">
+               <ul>
+                 <li *ngFor="let submenu of menu.submenus">
+                     
+
+                   <a routerLink="{{submenu.link}}"href="#"(click)="opened = !opened"> 
+                     <mat-icon class="icon">{{submenu.icon}}</mat-icon>
+                     <span>
+                        {{submenu.title}}
+                     </span>
+                     <!-- <span *ngIf="submenu.badge" class="badge badge-pill" [ngClass]="submenu.badge.class">{{submenu.badge.text}}</span> -->
+                   </a>
+                
+             
+                  
+                 </li>
+               </ul>
+             </div>
+           </li>
+         </ul>
+       </div>
+     </perfect-scrollbar>
+   </div>
+ </mat-sidenav>
+ </mat-sidenav-container>
+  
+
+
+
+
+
+
+
+
+
+ 
+ <div _ngcontent-c12="" class="content container-fluid">
+ 
+  <div _ngcontent-c12="" class="row">
+      <div _ngcontent-c12="" class="col-md-6 col-sm-6 col-lg-3">
+          <div _ngcontent-c12="" class="dash-widget clearfix card-box">
+              <span _ngcontent-c12="" class="dash-widget-icon">
+                  <i _ngcontent-c12="" aria-hidden="true" class="fa fa-cubes">
+
+                  </i></span><div _ngcontent-c12="" class="dash-widget-info">
+                      <h3 _ngcontent-c12=""></h3><span _ngcontent-c12="">Projects</span>
+                  </div>
+              </div>
+          </div>
+          <div _ngcontent-c12="" class="col-md-6 col-sm-6 col-lg-3">
+              <div _ngcontent-c12="" class="dash-widget clearfix card-box">
+                  <span _ngcontent-c12="" class="dash-widget-icon">
+                      <i _ngcontent-c12="" aria-hidden="true" class="fa fa-usd"></i>
+                  </span>
+                  <div _ngcontent-c12="" class="dash-widget-info">
+                      <h3 _ngcontent-c12=""></h3>
+                      <span _ngcontent-c12="">Clients</span>
+                  </div>
+              </div>
+          </div>
+          <div _ngcontent-c12="" class="col-md-6 col-sm-6 col-lg-3">
+              <div _ngcontent-c12="" class="dash-widget clearfix card-box">
+                  <span _ngcontent-c12="" class="dash-widget-icon">
+                      <i _ngcontent-c12="" class="fa fa-diamond"></i>
+                  </span>
+                  <div _ngcontent-c12="" class="dash-widget-info">
+                      <h3 _ngcontent-c12=""></h3>
+                      <span _ngcontent-c12="">Tasks</span>
+                  </div>
+              </div>
+          </div>
+          <div _ngcontent-c12="" class="col-md-6 col-sm-6 col-lg-3">
+              <div _ngcontent-c12="" class="dash-widget clearfix card-box">
+                  <span _ngcontent-c12="" class="dash-widget-icon">
+                      <i _ngcontent-c12="" aria-hidden="true" class="fa fa-user"></i></span>
+                      <div _ngcontent-c12="" class="dash-widget-info">
+                          <h3 _ngcontent-c12=""></h3>
+                          <span _ngcontent-c12="">Employees</span>
+                      </div>
+                  </div>
+              </div>
+          </div>
+</div>
+
+ <div class="container">
+  <router-outlet></router-outlet>
+</div>

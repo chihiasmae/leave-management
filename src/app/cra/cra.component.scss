@@ -1,0 +1,81 @@
+div#contenu {
+	width:500px;
+	height:400px;
+    background-color:#FFCC00;
+    float:center;
+	}
+.row {
+		margin-right: -15px;
+		margin-left: -15px;
+	}
+	@media (min-width: 1200px){
+	.col-lg-3 {
+		width: 25%;
+	}}
+	@media (min-width: 1200px){
+		 .col-lg-3 {
+		float: left;
+	}}
+	.card-box {
+		background-color: #fff;
+		border: 1px solid #ededed;
+		border-radius: 4px;
+		box-shadow: 0 1px 1px 0 rgba(0,0,0,.2);
+		margin-bottom: 30px;
+		padding: 20px;
+	}
+	dash-widget-icon {
+		background-color: #eee;
+		border-radius: 100%;
+		color: #777;
+		display: inline-block;
+		font-size: 30px;
+		height: 60px;
+		line-height: 60px;
+		margin-right: 10px;
+		text-align: center;
+		width: 60px;
+	}
+	.fa {
+		display: inline-block;
+		font: 14px/1 FontAwesome;
+		font-size: inherit;
+		text-rendering: auto;
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+	}
+	.content{
+	
+		width: 81%;
+		float: right;
+		height: 20px;
+	}
+	.row{
+		overflow:auto;
+	}
+	.dash-widget-info {
+		text-align: right;
+	}
+	.dash-widget-info>h3 {
+		font-size: 30px;
+		font-weight: 600;
+	}
+	h3{
+		margin-top: 0;
+	}
+	.dash-widget-info>span {
+		font-size: 16px;
+	}
+	.dash-widget-icon {
+		background-color: #eee;
+		border-radius: 100%;
+		color: #777;
+		display: inline-block;
+	
+		font-size: 30px;
+		height: 60px;
+	
+		margin-right: 10px;
+	
+		width: 60px;
+	}

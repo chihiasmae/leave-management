@@ -1,0 +1,121 @@
+<div>
+    <br>
+    <div class="container">
+    <div class="container">
+    <div fxLayout="column" fxLayoutGap="20px" fxLayout.gt-md="row" fxLayoutAlign="space-around center"
+    class="content">
+    <div class="blocks">
+    <button button="submit" mat-raised-button color="primary" (click)="openDialog()">
+    <mat-icon>add</mat-icon> Ajouter un personnel
+    </button>
+    </div>
+    </div>
+    </div>
+    <br>
+    <div class="container">
+    <div fxLayout="row" fxLayoutAlign="center center" class="content">
+    <mat-card class="card">
+    <mat-card-title fxLayout.gt-xs="row" fxLayout.xs="column">
+    <h3 style="background-color: darkgrey;
+    flex-direction: row;
+    box-sizing: border-box;
+    display: flex;
+    font-family: serif;" ><strong>Personnel</strong> </h3>
+    </mat-card-title>
+    <mat-card-content>
+  
+  
+  
+    
+    
+      
+    
+    <div class="example-container mat-elevation-z8">
+    <mat-table #table [dataSource]="conges" #table  matSort>
+   
+    
+    
+    <ng-container matColumnDef="nom">
+    <mat-header-cell *matHeaderCellDef  mat-sort-header> <strong>Nom</strong> </mat-header-cell>
+    <mat-cell *matCellDef="let element"  [style.color]="c"> {{element.nom}} </mat-cell>
+    </ng-container>
+    
+    
+    <!-- <ng-container matColumnDef="demandeur">
+        <mat-header-cell *matHeaderCellDef  mat-sort-header> Demandeur</mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.demandeur}} </mat-cell>
+        </ng-container>
+     -->
+    
+     <ng-container matColumnDef="email">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>  <strong>Email</strong> </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.email}} </mat-cell>
+      </ng-container>
+    <ng-container matColumnDef="dated">
+    <mat-header-cell *matHeaderCellDef mat-sort-header><strong> Année de creataion </strong>  </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.dated | date: 'd/M/y'}}
+    </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="anneeNaissance">
+    <mat-header-cell *matHeaderCellDef mat-sort-header> <strong>Date de création</strong>  </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.anneeNaissance | date: 'd/M/y'}} </mat-cell>
+    </ng-container>
+   <ng-container matColumnDef="role">
+    <mat-header-cell *matHeaderCellDef mat-sort-header> <strong>Role</strong>  </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.role}} </mat-cell>
+    </ng-container> 
+    <ng-container matColumnDef="tele">
+    <mat-header-cell *matHeaderCellDef mat-sort-header> <strong>Téléphone</strong> </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.tele}} </mat-cell>
+    </ng-container>
+    <!-- <ng-container matColumnDef="motif">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>  <strong>Mot de passe</strong> </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.body}} </mat-cell>
+      </ng-container> -->
+      <ng-container matColumnDef="fonction">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> <strong>Fonction</strong> </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.fonction}} </mat-cell>
+        </ng-container>
+        <!-- <ng-container matColumnDef="fonction">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> <strong>Role</strong> </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.fonction}} </mat-cell>
+          </ng-container> -->
+          <ng-container matColumnDef="ville">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> <Strong>Ville</Strong> </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.ville}} </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="motDePass">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> <Strong>Mot de passe</Strong> </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.motDePass}} </mat-cell>
+                </ng-container>
+            
+          
+      <app-toaster-container></app-toaster-container>
+     <ng-container matColumnDef="delete">
+    <mat-header-cell *matHeaderCellDef mat-sort-header> <strong>Actions</strong> </mat-header-cell>
+    <mat-cell *matCellDef="let element">
+    <a (click)="supprimer(element.id)" matTooltip="supprimer la ligne créé" type="button"> <mat-icon class="delette">delete</mat-icon>
+    
+     <!-- <a (click)="validerPost(element.id)" type="button">
+        <mat-icon class="icon" style="color:blue;">done</mat-icon>
+      </a>
+        <a (click)="refuserPost(element.id)" type="button">
+        <mat-icon class="icon" style="color: red;">highlight_off</mat-icon>-->
+        </a>
+    </mat-cell>
+    </ng-container> 
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    
+    
+    
+    
+    </mat-table>
+    
+    </div>
+    </mat-card-content>
+    </mat-card>
+    </div>
+    </div>
+    </div>
+    </div>

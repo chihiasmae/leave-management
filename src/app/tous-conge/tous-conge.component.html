@@ -1,0 +1,100 @@
+
+<div>
+  <br>
+  <div class="container">
+  <div class="container">
+  <div fxLayout="column" fxLayoutGap="20px" fxLayout.gt-md="row" fxLayoutAlign="space-around center"
+  class="content">
+  
+  </div>
+  </div>
+  <br>
+  <div class="container">
+  <div fxLayout="row" fxLayoutAlign="center center" class="content">
+  <mat-card class="card">
+  <mat-card-title fxLayout.gt-xs="row" fxLayout.xs="column">
+  <h3><strong> Demandes de congés du personnel</strong></h3>
+  </mat-card-title>
+  <mat-card-content>
+
+
+
+  
+  
+    <mat-form-field>
+      <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+    </mat-form-field>
+  
+  
+  <div class="example-container mat-elevation-z8">
+  <mat-table #table [dataSource]="conges" #table  matSort>
+  
+  
+  
+  <ng-container matColumnDef="etat">
+  <mat-header-cell *matHeaderCellDef  mat-sort-header> <strong>Etat</strong> </mat-header-cell>
+  <mat-cell *matCellDef="let element"> {{element.etat}} </mat-cell>
+  </ng-container>
+  
+  
+  <ng-container matColumnDef="demandeur">
+      <mat-header-cell *matHeaderCellDef  mat-sort-header> <strong>Demandeur</strong> </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.demandeur}} </mat-cell>
+      </ng-container>
+  
+  
+  
+  <ng-container matColumnDef="date_posted">
+  <mat-header-cell *matHeaderCellDef mat-sort-header> <strong> Date du demande</strong>  </mat-header-cell>
+  <mat-cell *matCellDef="let element"> {{element.dated | date: 'd/M/y'}}
+  </mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="dateDebut">
+  <mat-header-cell *matHeaderCellDef mat-sort-header> <strong>Date début</strong> </mat-header-cell>
+  <mat-cell *matCellDef="let element"> {{element.datedeb | date: 'd/M/y'}} </mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="dateFin">
+  <mat-header-cell *matHeaderCellDef mat-sort-header> <strong>Date fin</strong> </mat-header-cell>
+  <mat-cell *matCellDef="let element"> {{element.datefin | date: 'd/M/y'}} </mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="type">
+  <mat-header-cell *matHeaderCellDef mat-sort-header> <strong>Type de Congé</strong> </mat-header-cell>
+  <mat-cell *matCellDef="let element"> {{element.TypeConge}} </mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="nbJours">
+  <mat-header-cell *matHeaderCellDef mat-sort-header> <strong>Nombre jours</strong> </mat-header-cell>
+  <mat-cell *matCellDef="let element"> {{element.nbrJours}} </mat-cell>
+  </ng-container>
+  <!-- <ng-container matColumnDef="motif">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> <strong> Motif</strong></mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.motif}} </mat-cell>
+      </ng-container> -->
+      
+  <ng-container matColumnDef="delete">
+  <mat-header-cell *matHeaderCellDef mat-sort-header> <strong>Actions</strong> </mat-header-cell>
+  <mat-cell *matCellDef="let element">
+  <!-- <a (click)="deletePost(element.position)" type="button"> -->
+    <a (click)="validerPost(element.id)" type="button">
+      <mat-icon class="icon" style="color:blue;">done</mat-icon>
+    </a>
+      <a (click)="refuserPost(element.id)" type="button">
+      <mat-icon class="icon" style="color: red;">highlight_off</mat-icon>
+      </a>
+  </mat-cell>
+  </ng-container>
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  
+  
+  
+  
+  </mat-table>
+  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+  </div>
+  </mat-card-content>
+  </mat-card>
+  </div>
+  </div>
+  </div>
+  </div>
+  

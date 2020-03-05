@@ -1,0 +1,42 @@
+<div mat-dialog-content>
+  <form class="example-form" (ngSubmit)="onSubmit()">
+      <mat-form-field>
+          <input matInput placeholder="Nom" required [(ngModel)]="blogPost.nom" name="nom" type="text">
+        </mat-form-field> 
+       <mat-form-field>
+          <input matInput placeholder="role"  required [(ngModel)]="blogPost.role" name="role" type="text">
+        </mat-form-field>  
+        <mat-form-field>
+            <input matInput placeholder="mot de passe"  required [(ngModel)]="blogPost.motDePass" name="motDePass" type="text">
+          </mat-form-field>  
+        <mat-form-field>
+          <input matInput [matDatepicker]="picker" readonly (click)="picker.open()" placeholder="Date de naissance"  required [(ngModel)]="blogPost.anneeNaissance" name="anneeNaissance">
+    
+     <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field>
+     
+        <input matInput placeholder="tele" required [(ngModel)]="blogPost.tele" name="tete" type="text" >
+          </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="email" required [(ngModel)]="blogPost.email" name="email" type="email">
+        </mat-form-field> 
+        <mat-form-field>
+          <input matInput placeholder="fonction" required  [(ngModel)]="blogPost.fonction" name="fonction" type="text">
+        </mat-form-field> 
+        <mat-form-field>
+        <mat-select matInput placeholder="Ville" required [(ngModel)]="blogPost.ville" name="ville">
+          <mat-option *ngFor="let typ of type" [value]="typ.value">
+            {{ typ.viewValue }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+       
+         <div>
+            <button mat-raised-button type="submit" color="primary">Save</button>
+         </div>
+          </form>
+       
+        <div mat-dialog-actions>
+          <button mat-raised-button class="close" (click)="onNoClick()" color="warn">Cancel</button>
+       

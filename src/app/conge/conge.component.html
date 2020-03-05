@@ -1,0 +1,104 @@
+<div>
+  <br>
+  <div class="container">
+  <div class="container">
+  <div fxLayout="column" fxLayoutGap="20px" fxLayout.gt-md="row" fxLayoutAlign="space-around center"
+  class="content">
+  <div class="blocks">
+  <button button="submit" mat-raised-button color="primary" (click)="openDialog()">
+  <mat-icon>add</mat-icon> Ajouter une demande
+  </button>
+  </div>
+  </div>
+  </div>
+  <br>
+  <div class="container">
+  <div fxLayout="row" fxLayoutAlign="center center" class="content">
+  <mat-card class="card">
+  <mat-card-title fxLayout.gt-xs="row" fxLayout.xs="column">
+  <h3 style="background-color: darkgrey;
+  flex-direction: row;
+  box-sizing: border-box;
+  display: flex;
+  font-family: serif;" ><strong>Mes demandes de conges</strong> </h3>
+  </mat-card-title>
+  <mat-card-content>
+
+
+
+  
+  
+    
+  
+  <div class="example-container mat-elevation-z8">
+  <mat-table #table [dataSource]="conges" #table  matSort>
+  
+  
+  
+  <ng-container matColumnDef="etat">
+  <mat-header-cell *matHeaderCellDef  mat-sort-header> Etat</mat-header-cell>
+  <mat-cell *matCellDef="let element"  [style.color]="c"> {{element.etat}} </mat-cell>
+  </ng-container>
+  
+  
+  <!-- <ng-container matColumnDef="demandeur">
+      <mat-header-cell *matHeaderCellDef  mat-sort-header> Demandeur</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.demandeur}} </mat-cell>
+      </ng-container>
+   -->
+  
+  
+  <ng-container matColumnDef="date_posted">
+  <mat-header-cell *matHeaderCellDef mat-sort-header> Date demande  </mat-header-cell>
+  <mat-cell *matCellDef="let element"> {{element.dated | date: 'd/M/y'}}
+  </mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="dateDebut">
+  <mat-header-cell *matHeaderCellDef mat-sort-header> Date debut</mat-header-cell>
+  <mat-cell *matCellDef="let element"> {{element.datedeb | date: 'd/M/y'}} </mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="dateFin">
+  <mat-header-cell *matHeaderCellDef mat-sort-header> Date fin</mat-header-cell>
+  <mat-cell *matCellDef="let element"> {{element.datefin | date: 'd/M/y'}} </mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="type">
+  <mat-header-cell *matHeaderCellDef mat-sort-header> Type Conge</mat-header-cell>
+  <mat-cell *matCellDef="let element"> {{element.TypeConge}} </mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="nbJours">
+  <mat-header-cell *matHeaderCellDef mat-sort-header>  Nombre jours</mat-header-cell>
+  <mat-cell *matCellDef="let element" style="align-content: center;float: right;"> <strong> {{element.nbrJours}} </strong></mat-cell>
+  </ng-container>
+  <!-- <ng-container matColumnDef="motif">
+    <mat-header-cell *matHeaderCellDef mat-sort-header> Motif</mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.motif}} </mat-cell>
+    </ng-container> -->
+    <app-toaster-container></app-toaster-container>
+   <ng-container matColumnDef="delete">
+  <mat-header-cell *matHeaderCellDef mat-sort-header>Actions</mat-header-cell>
+  <mat-cell *matCellDef="let element">
+  <a (click)="supprimer(element.id)" matTooltip="supprimer la ligne créé" type="button"> <mat-icon class="delette">delete</mat-icon>
+  
+   <!-- <a (click)="validerPost(element.id)" type="button">
+      <mat-icon class="icon" style="color:blue;">done</mat-icon>
+    </a>
+      <a (click)="refuserPost(element.id)" type="button">
+      <mat-icon class="icon" style="color: red;">highlight_off</mat-icon>-->
+      </a>
+  </mat-cell>
+  </ng-container> 
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  
+  
+  
+  
+  </mat-table>
+  
+  </div>
+  </mat-card-content>
+  </mat-card>
+  </div>
+  </div>
+  </div>
+  </div>

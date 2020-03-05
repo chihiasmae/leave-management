@@ -1,0 +1,42 @@
+<h1 mat-dialog-title>Ma demande</h1>
+<div mat-dialog-content>
+  <form class="example-form" (ngSubmit)="onSubmit()">
+
+<mat-form-field class="invisible example-full-width">
+         
+              <input  matInput placeholder="demandeur"  required   [(ngModel)]="currentUser.username" name="demandeur"  type="text">
+              
+            </mat-form-field>
+    
+    <mat-form-field>
+      <input matInput [matDatepicker]="picker" readonly (click)="picker.open()" placeholder="Date debut"  required [(ngModel)]="blogPost.dateDebut" name="dateDebut">
+
+ <mat-datepicker #picker></mat-datepicker>
+</mat-form-field>
+    <mat-form-field>
+      <input matInput [matDatepicker]="picker1" readonly (click)="picker1.open()" (blur)="myFunction()" placeholder="Date fin" required [(ngModel)]="blogPost.dateFin" name="dateFin" >
+
+ <mat-datepicker #picker1></mat-datepicker>
+</mat-form-field>
+<mat-form-field>
+  <mat-select matInput placeholder="Type Conge" required [(ngModel)]="blogPost.type" name="type">
+    <mat-option *ngFor="let typ of type" [value]="typ.value">
+      {{ typ.viewValue }}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+<mat-form-field>
+  <h6 style="color:red;margin-top:10px;">{{nbb}}</h6>
+  <input matInput placeholder="Nombre Jours" required [(ngModel)]="blogPost.nbJours" name="nbJours" type="text" disabled>{{nbJours}}
+    </mat-form-field>
+    
+<mat-form-field>
+      <input matInput placeholder="Motif"  [(ngModel)]="blogPost.body" name="body" type="text">
+</mat-form-field>
+    <button mat-raised-button type="submit"  color="primary">Save</button>
+  </form>
+  <app-toaster-container></app-toaster-container>
+</div>
+<div mat-dialog-actions>
+  <button mat-raised-button class="close" (click)="onNoClick()" color="warn">Cancel</button>
+</div>
